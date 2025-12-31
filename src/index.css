@@ -79,3 +79,37 @@ button:focus-visible {
   height: auto;
   display: block;
 }
+
+.edit-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 450px;
+  margin: 20px 0;
+}
+
+.edit-inputs input,
+.edit-inputs textarea {
+  background-color: #2a2a2a;
+  border: 2px solid #3f3f3f;
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.edit-inputs input:focus,
+.edit-inputs textarea:focus {
+  border-color: #646cff;
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2);
+}
+
+.edit-inputs textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
