@@ -11,3 +11,5 @@ sudo aws ecr get-login-password --region us-east-1 | sudo docker login --usernam
 sudo docker tag country-flags:latest 992382747916.dkr.ecr.us-east-1.amazonaws.com/country-flags:latest
 
 sudo docker push 992382747916.dkr.ecr.us-east-1.amazonaws.com/country-flags:latest
+
+http://country-flags-136189765.us-east-1.elb.amazonaws.com/
