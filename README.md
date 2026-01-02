@@ -6,6 +6,8 @@ npx
 
 # env setup
 
+npm install
+
 python -m venv env
 
 pip install -r requirements.txt

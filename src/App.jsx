@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Flag from './flag.jsx'
+import About from './pages/About.jsx'
 
 const flagImages = import.meta.glob('./assets/flags/*.png', { eager: true });
 const imageUrls = Object.values(flagImages).map(m => m.default);
@@ -23,24 +25,40 @@ console.log("Flags Data:", initialFlags);
 
 function App() {
   return (
-    <>
-      <h1>Country Flags</h1>
+    <Router>
+      <header>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+        </nav>
+        <img src={viteLogo} className="vite-logo" alt="Vite logo" />
+      </header>
 
-      <div className="flag-grid">
-        {initialFlags.map((flag, index) => (
-          <Flag 
-            key={index}
-            image={flag.url}
-            name={flag.name}
-            description={flag.description}
-          />
-        ))}
-      </div>
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <h1>Country Flags</h1>
+            <div className="flag-grid">
+              {initialFlags.map((flag, index) => (
+                <Flag 
+                  key={index}
+                  image={flag.url}
+                  name={flag.name}
+                  description={flag.description}
+                />
+              ))}
+            </div>
+            <p className="read-the-docs">
+              Click on the Vite and React logos to learn more
+            </p>
+          </>
+        } />
+        
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   )
 }
 
