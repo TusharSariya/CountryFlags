@@ -16,6 +16,10 @@ source env/bin/activate
 
 # local raw vite 
 
+requires 2 different terminals
+
+python src/backend/app.py
+
 npx vite
 
 

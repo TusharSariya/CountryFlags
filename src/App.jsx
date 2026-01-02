@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -24,6 +24,20 @@ const initialFlags = Object.entries(flagImages).map(([path, module]) => {
 console.log("Flags Data:", initialFlags);
 
 function App() {
+
+  const [healthStatus, setHealthStatus] = useState('checking...');
+
+  useEffect(() => {
+    console.log("Checking backend health...");
+    fetch('/api/health')
+      .then(res => res.json())
+      .then(data => setHealthStatus(data.status))
+      .catch(err => {
+        console.error("Backend unreachable:", err);
+        setHealthStatus('offline');
+      });
+  }, []);
+
   return (
     <Router>
       <header>
@@ -33,6 +47,9 @@ function App() {
             <li><Link to="/about">About</Link></li>
           </ul>
         </nav>
+        <div style={{ fontSize: '0.8rem', color: healthStatus === 'healthy' ? 'green' : 'red' }}>
+          Backend: {healthStatus}
+        </div>
         <img src={viteLogo} className="vite-logo" alt="Vite logo" />
       </header>
 
