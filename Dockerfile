@@ -15,7 +15,7 @@ RUN apk add --no-cache python3 py3-pip
 # Set up backend directory and install dependencies
 WORKDIR /app
 COPY src/backend/ /app/backend/
-RUN pip install --no-cache-dir flask flask-cors boto3 --break-system-packages
+RUN pip install --no-cache-dir flask flask-cors boto3 "botocore[crt]" --break-system-packages
 
 # Copy custom nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf

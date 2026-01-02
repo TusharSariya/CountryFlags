@@ -33,7 +33,7 @@ sudo docker rm -f <container ID>
 
 sudo docker build -t country-flags .
 
-sudo docker run -d -p 8080:80 --name flags-continer country-flags
+sudo docker run -d -p 8080:80 -v ~/.aws:/root/.aws --name flags-continer country-flags
 
 http://localhost:8080
 
@@ -49,3 +49,9 @@ sudo docker tag country-flags:latest 992382747916.dkr.ecr.us-east-1.amazonaws.co
 sudo docker push 992382747916.dkr.ecr.us-east-1.amazonaws.com/country-flags:latest
 
 http://country-flags-136189765.us-east-1.elb.amazonaws.com/
+
+
+# todo
+
+- make ECS only require a private IP to retrieve ECR images ( is this possible without an interface endpoint?)
+- SGs and IAM lockdown
