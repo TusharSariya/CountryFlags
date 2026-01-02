@@ -1,8 +1,30 @@
+# dependencies
+
+node/npm
+
+npx
+
+# local raw vite 
+
+npx vite
+
+
+# local docker build
+
+sudo docker ps -a 
+
+<retrieve container ID>
+
+sudo docker rm -f <container ID>
+
 sudo docker build -t country-flags .
 
 sudo docker run -d -p 8080:80 --name flags-continer country-flags
 
 http://localhost:8080
+
+
+# aws build
 
 sudo aws login
 
