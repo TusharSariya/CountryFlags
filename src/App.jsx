@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Flag from './flag.jsx'
 import About from './pages/About.jsx'
+import BlackWhite from './pages/BlackWhite.jsx'
 
 const flagImages = import.meta.glob('./assets/flags/*.png', { eager: true });
 const imageUrls = Object.values(flagImages).map(m => m.default);
@@ -47,6 +48,7 @@ function App() {
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About</Link></li>
+              <li><Link to="/blackwhite">BlackWhite</Link></li>
             </ul>
           </nav>
           <div style={{ fontSize: '0.8rem', color: healthStatus === 'healthy' ? 'green' : 'red' }}>
@@ -76,6 +78,7 @@ function App() {
           } />
           
           <Route path="/about" element={<About />} />
+          <Route path="/blackwhite" element={<BlackWhite />} />
         </Routes>
       </Router>
     </div>
