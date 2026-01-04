@@ -6,6 +6,8 @@ import './App.css'
 import Flag from './flag.jsx'
 import About from './pages/About.jsx'
 import BlackWhite from './pages/BlackWhite.jsx'
+import OneMillionButtons from './pages/onemillionbuttons.jsx';
+import OneMillionButtonsWindow from './pages/onemillionbuttonswindow.jsx';
 
 const flagImages = import.meta.glob('./assets/flags/*.png', { eager: true });
 const imageUrls = Object.values(flagImages).map(m => m.default);
@@ -49,6 +51,8 @@ function App() {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/blackwhite">BlackWhite</Link></li>
+              <li><Link to="/onemillionbuttons">OneMillionButtons</Link></li>
+              <li><Link to="/onemillionbuttonswindow">OneMillionButtonsWindow</Link></li>
             </ul>
           </nav>
           <div style={{ fontSize: '0.8rem', color: healthStatus === 'healthy' ? 'green' : 'red' }}>
@@ -79,6 +83,8 @@ function App() {
           
           <Route path="/about" element={<About />} />
           <Route path="/blackwhite" element={<BlackWhite />} />
+          <Route path="/onemillionbuttons" element={<OneMillionButtons />} />
+          <Route path="/onemillionbuttonswindow" element={<OneMillionButtonsWindow />} />
         </Routes>
       </Router>
     </div>
