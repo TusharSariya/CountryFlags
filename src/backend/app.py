@@ -13,12 +13,22 @@ table = dynamodb.Table('country-flags')
 
 print("backend initialized")
 
-@app.route('/api/flags')
+@app.route('/api/flags', methods=['GET'])
 def get_flags():
     # Fetch data from DynamoDB
     print("Fetching flags from DynamoDB")
     response = table.scan()
     return jsonify(response.get('Items', []))
+
+
+@app.route('/api/flags/<flag_id>', methods=['POST'])
+def add_flag(flag_id):
+    print("Adding a flag to DynamoDB")
+    # Logic to add a flag would go here
+    res = table.put_item(Item={"country": flag_id})
+    print(res)
+
+    return jsonify({"message": "Flag added"})
 
 @app.route('/api/health')
 def health_check():
